@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hackathon Website Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#A94385", // vibrant pink
+              "deep-purple": "#5A3793",
+              "background-light": "#f8f6f7",
+              "background-dark": "#1d151a",
+              "card-dark": "rgba(255, 255, 255, 0.05)",
+              "border-dark": "rgba(255, 255, 255, 0.1)",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        body {
+          min-height: 100vh;
+          background-color: #1d151a;}
+        .main-grid {
+          grid-template-areas:
+            "countdown"
+            "teams"
+            "subject"
+            "jury"
+            "status";
+        }
+        @media (min-width: 1024px) {
+          .main-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto 1fr;
+            grid-template-areas:
+              "countdown countdown subject"
+              "teams teams jury"
+              "teams teams status";
+            gap: 1.5rem;}
+        }
+        .grid-countdown { grid-area: countdown; }
+        .grid-teams { grid-area: teams; }
+        .grid-subject { grid-area: subject; }
+        .grid-jury { grid-area: jury; }
+        .grid-status { grid-area: status; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display text-white">
+<div class="flex min-h-screen w-full">
+<aside class="hidden lg:flex w-64 flex-col border-r border-border-dark bg-background-dark p-6">
+<h1 class="text-2xl font-bold text-white">Genesis Hackathon</h1>
+<nav class="mt-10 flex flex-col gap-4">
+<a class="flex items-center gap-3 rounded-lg bg-primary/20 px-4 py-3 text-base font-bold text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-white/70 hover:bg-white/5 hover:text-white" href="#">
+<span class="material-symbols-outlined">event</span>
+<span>Schedule</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-white/70 hover:bg-white/5 hover:text-white" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Équipes</span>
+</a>
+<a class="flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-white/70 hover:bg-white/5 hover:text-white" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Profil</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 text-base font-bold text-white transition-colors hover:bg-primary/90">
+<span class="material-symbols-outlined">upload</span>
+<span>Submit Project</span>
+</button>
+</div>
+</aside>
+<div class="flex flex-1 flex-col">
+<header class="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-white/10 bg-background-dark/80 px-4 backdrop-blur-sm lg:hidden">
+<h1 class="text-lg font-bold text-white">Genesis Hackathon</h1>
+<button class="flex h-10 w-10 items-center justify-center text-white">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</header>
+<main class="flex-1 p-4 lg:p-8">
+<div class="main-grid grid gap-4">
+<div class="grid-countdown flex flex-col items-center rounded-xl border border-border-dark bg-card-dark p-6 lg:bg-gradient-to-br lg:from-deep-purple lg:to-primary">
+<h2 class="text-2xl font-bold text-white">Compte à rebours</h2>
+<div class="flex w-full max-w-lg gap-3 py-6 sm:gap-4">
+<div class="flex flex-1 flex-col items-center gap-2">
+<div class="flex h-20 w-full lg:h-28 items-center justify-center rounded-lg bg-white/10 lg:bg-white/20">
+<p class="text-4xl lg:text-6xl font-bold tracking-tight text-white">01</p>
+</div>
+<p class="text-sm font-normal text-white/80">Jours</p>
+</div>
+<div class="flex flex-1 flex-col items-center gap-2">
+<div class="flex h-20 w-full lg:h-28 items-center justify-center rounded-lg bg-white/10 lg:bg-white/20">
+<p class="text-4xl lg:text-6xl font-bold tracking-tight text-white">18</p>
+</div>
+<p class="text-sm font-normal text-white/80">Heures</p>
+</div>
+<div class="flex flex-1 flex-col items-center gap-2">
+<div class="flex h-20 w-full lg:h-28 items-center justify-center rounded-lg bg-white/10 lg:bg-white/20">
+<p class="text-4xl lg:text-6xl font-bold tracking-tight text-white">42</p>
+</div>
+<p class="text-sm font-normal text-white/80">Minutes</p>
+</div>
+<div class="flex flex-1 flex-col items-center gap-2">
+<div class="flex h-20 w-full lg:h-28 items-center justify-center rounded-lg bg-white/10 lg:bg-white/20">
+<p class="text-4xl lg:text-6xl font-bold tracking-tight text-white">29</p>
+</div>
+<p class="text-sm font-normal text-white/80">Secondes</p>
+</div>
+</div>
+</div>
+<div class="grid-teams flex flex-col rounded-xl border border-border-dark bg-card-dark p-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-semibold text-white">Équipe participante</h3>
+<a class="text-sm font-medium text-primary" href="#">Voir tout</a>
+</div>
+<div class="mt-4 -mx-6 flex flex-1 flex-col">
+<div class="overflow-y-auto">
+<table class="min-w-full divide-y divide-border-dark">
+<thead class="bg-white/5">
+<tr>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/70" scope="col">Nom de l'équipe</th>
+<th class="hidden px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/70 md:table-cell" scope="col">Membres</th>
+<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/70" scope="col">Soumission</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-dark">
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Innovatech</td>
+<td class="hidden px-6 py-4 whitespace-nowrap text-sm text-white/80 md:table-cell">A. Martin, B. Dubois</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm"><span class="inline-flex items-center rounded-full bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-400">Soumis</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Code Wizards</td>
+<td class="hidden px-6 py-4 whitespace-nowrap text-sm text-white/80 md:table-cell">C. Petit, D. Laurent</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm"><span class="inline-flex items-center rounded-full bg-yellow-500/20 px-2.5 py-0.5 text-xs font-medium text-yellow-400">En cours</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Data Dynamos</td>
+<td class="hidden px-6 py-4 whitespace-nowrap text-sm text-white/80 md:table-cell">E. Moreau, F. Girard</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm"><span class="inline-flex items-center rounded-full bg-green-500/20 px-2.5 py-0.5 text-xs font-medium text-green-400">Soumis</span></td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Future Forge</td>
+<td class="hidden px-6 py-4 whitespace-nowrap text-sm text-white/80 md:table-cell">G. Lefevre, H. Roux</td>
+<td class="px-6 py-4 whitespace-nowrap text-sm"><span class="inline-flex items-center rounded-full bg-red-500/20 px-2.5 py-0.5 text-xs font-medium text-red-400">Non soumis</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="grid-subject flex flex-col gap-4 rounded-xl border border-border-dark bg-card-dark p-6">
+<h3 class="text-xl font-semibold text-white">Sujet de hackathon</h3>
+<p class="text-3xl font-bold leading-tight text-primary">AI for Good</p>
+<p class="text-base text-white/70">Utiliser l'intelligence artificielle pour résoudre des défis sociétaux et environnementaux urgents.</p>
+</div>
+<div class="grid-jury flex flex-col gap-4 rounded-xl border border-border-dark bg-card-dark p-6">
+<h3 class="text-xl font-semibold text-white">Membre du jury</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<img class="h-12 w-12 rounded-full" data-alt="Profile picture of a jury member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh8NSmKLuqJE5s2kB6mQE_SCvWfvIiALiQmYt8ySkbNEz7d98Y4wqTcP3iEfbzINUH1bw16ZOoZM4wsN5PRHio_J0jEZr7OxDsF0icgxyachZf5xnU-ZBVbhbi1eBD3FoAMnUW1fIkyKBllGjNBUs3XNIPGS29ZISHbQSq4CpH8hXDPNfu9XnKhhiAU5EamvRS67zO512q-Sbzt0H6_V2_UAgaoB71P64inN0opzXTbCb0V4a5lRZOc-mRY5sZ0y-b6M8BrfuNI_8"/>
+<div>
+<p class="font-semibold text-white">Dr. Elara Vance</p>
+<p class="text-sm text-white/70">AI Ethicist</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="h-12 w-12 rounded-full" data-alt="Profile picture of a jury member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH7fGbCe83S39yGUy-_65xH1t7hxzU55HcZ6wP6FwElSNK5zwCa5bg417-FdOaojITMECSedV7jO2nKKaNqdYwO4e0mz5KRJ8vYvnlua2_yAf0V3vXSJI2_3BgLJ_th6tGBZnOPBfwVf5ljfWbdgae5143DSrXr2UfvXe014f7GiGtXWQxih7yEANfOnTmge834oWCh6N3iLKwwabjPSACwZff5WsogyRsz4CHDW3sSl-I_S1Qzh0uVRdT8PmmzuyS7gsIvBP96LM"/>
+<div>
+<p class="font-semibold text-white">Kenji Tanaka</p>
+<p class="text-sm text-white/70">Lead UX Designer</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="h-12 w-12 rounded-full" data-alt="Profile picture of a jury member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLNwOGTb1DOquYlKYnkFQYecu3sdvjwpembV0Vkzv3gW9AMO4KCKmMfMgrjASB1gRVednMxDDSN5vjZlkTlZggkNOPEVPZihmKQIKLcy9oKGwL5zklKz7TZ4rq3LP56zpKMG2LNIcVwFeGb8IFOCm9O5UmnuD7kETxsbySw2txxN-Lc60TYwYrJnxZoXi2g_i8A5W2ne7Sk3kwpeQugQ01fJ7LsB4OEwkNyfli5tUOpIQxNO4fR-HhCuw2BSQf-j8tE4_hxQ-DDwY"/>
+<div>
+<p class="font-semibold text-white">Anya Sharma</p>
+<p class="text-sm text-white/70">Venture Capitalist</p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid-status flex flex-col items-center justify-center gap-2 rounded-xl border border-border-dark bg-card-dark p-6">
+<h3 class="text-xl font-semibold text-white">Status de hackathon</h3>
+<div class="mt-2 flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/20 px-4 py-1">
+<p class="text-sm font-medium leading-normal text-primary">En Cours</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<nav class="fixed bottom-0 left-0 z-10 w-full border-t border-white/10 bg-background-dark/80 backdrop-blur-sm lg:hidden">
+<div class="flex h-16 items-center justify-around px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-xs font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-white/70 hover:text-white" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-xs font-medium">Schedule</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-white/70 hover:text-white" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-xs font-medium">Teams</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-white/70 hover:text-white" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+
+</body></html>
